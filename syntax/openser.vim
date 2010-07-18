@@ -62,31 +62,46 @@ syn sync fromstart
 "syn sync match openserSync          grouphere openserFunctionFold "\<\(failure_|onreply_\)\?route\>"
 "syn sync match openserSync          grouphere NONE "^}"
 
-hi def link openserCppComment       Comment
-hi def link openserHashComment      Comment
-hi def link openserTodo             Todo
 
-hi def link openserConfigModparam   Function
-hi def link openserConfigModule     Keyword
+" Define the default highlighting.
+" For version 5.7 and earlier: only when not done already
+" For version 5.8 and later: only when an item doesn't have highlighting yet
+if version >= 508 || !exists("did_lisp_syntax_inits")
+  if version < 508
+    let did_lisp_syntax_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
 
-hi def link openserKeyword          Keyword
-hi def link openserCoreKeyword      Special
-hi def link openserCoreValue        Special
-hi def link openserCoreFunction     Function
-hi def link openserFunction         Function
-hi def link openserIdentifier       Identifier
-hi def link openserSpecial          Special
-hi def link openserCoreParameter    Keyword
+  HiLink openserCppComment       Comment
+  HiLink openserHashComment      Comment
+  HiLink openserTodo             Todo
 
-hi def link openserOperator         Operator
+  HiLink openserConfigModparam   Function
+  HiLink openserConfigModule     Keyword
 
-hi def link openserConditional      Conditional
+  HiLink openserKeyword          Keyword
+  HiLink openserCoreKeyword      Special
+  HiLink openserCoreValue        Special
+  HiLink openserCoreFunction     Function
+  HiLink openserFunction         Function
+  HiLink openserIdentifier       Identifier
+  HiLink openserSpecial          Special
+  HiLink openserCoreParameter    Keyword
 
-hi def link openserNumber           Number
-hi def link openserVariable         Identifier
-hi def link openserString           String
-hi def link openserStringDelimiter  Delimiter
-hi def link openserStringEscape     Special
+  HiLink openserOperator         Operator
+
+  HiLink openserConditional      Conditional
+
+  HiLink openserNumber           Number
+  HiLink openserVariable         Identifier
+  HiLink openserString           String
+  HiLink openserStringDelimiter  Delimiter
+  HiLink openserStringEscape     Special
+
+  delcommand HiLink
+endif
 
 let b:current_syntax = "openser"
 
