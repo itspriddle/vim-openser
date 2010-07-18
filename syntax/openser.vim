@@ -39,7 +39,7 @@ syn match   openserHashComment      '#.*$' contains=openserTodo
 syn match   openserStringEscape     '\\.' contained
 syn match   openserNumber           '[0-9]\+' contained
 syn region  openserString           matchgroup=openserStringDelimiter start="\"" end="\"" skip="\\\\\|\\\"" contained contains=openserVariable,openserStringEscape
-syn region  openserString           matchgroup=openserStringDelimiter start="'"  end="'"  skip="\\\\\|\\'" contained contains=openserVariable,openserStringEscape
+syn region  openserString           matchgroup=openserStringDelimiter start="'"  end="'"  skip="\\\\\|\\'"  contained contains=openserVariable,openserStringEscape
 syn match   openserVariable         "$[a-zA-Z_][a-zA-Z0-9_]*\(([^)]\+)\)\?" contained
 syn match   openserIdentifier       '\<[a-zA-Z_][a-zA-Z0-9_]*\>' contained
 syn keyword openserConditional      if else switch case contained
@@ -53,7 +53,7 @@ syn keyword openserCoreParameter    advertised_address advertised_port alias avp
 syn region  openserBlock            start='{' end='}' contained contains=openserBlock,@openserCodeElements transparent fold
 
 syn match   openserFunction         '\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\s*\[[^\]]\+\]\)\?' contained contains=openserNumber
-syn region  openserFunctionFold     matchgroup=openserFunction start="\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\s*\[[^\]]\+\]\)\?\s*\n*{" matchgroup=NONE end="}" transparent fold contains=openserBlock,@openserCodeElements
+syn region  openserFunctionFold     matchgroup=openserFunction start="\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\|\[\s*\[[^\]]\+\]\)\|\]\?\s*\n*{" matchgroup=NONE end="}" transparent fold contains=openserBlock,@openserCodeElements
 
 syn cluster openserCodeElements     contains=openserCppComment,openserHashComment,openserNumber,openserString,openserVariable,openserOperator,openserConditional,openserKeyword,openserCoreKeyword,openserCoreValue,openserCoreFunction,openserIdentifier
 
