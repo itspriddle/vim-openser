@@ -38,7 +38,8 @@ syn match   openserHashComment      '#.*$' contains=openserTodo
 
 syn match   openserStringEscape     '\\.' contained
 syn match   openserNumber           '[0-9]\+' contained
-syn region  openserString           matchgroup=Normal start='"' skip='\\"' end='"' contained contains=openserVariable,openserStringEscape
+syn region  openserString           matchgroup=openserStringDelimiter start="\"" end="\"" skip="\\\\\|\\\"" contained contains=openserVariable,openserStringEscape
+syn region  openserString           matchgroup=openserStringDelimiter start="'"  end="'"  skip="\\\\\|\\'" contained contains=openserVariable,openserStringEscape
 syn match   openserVariable         "$[a-zA-Z_][a-zA-Z0-9_]*\(([^)]\+)\)\?" contained
 syn match   openserIdentifier       '\<[a-zA-Z_][a-zA-Z0-9_]*\>' contained
 syn keyword openserConditional      if else switch case contained
@@ -84,6 +85,7 @@ hi def link openserConditional      Conditional
 hi def link openserNumber           Number
 hi def link openserVariable         Identifier
 hi def link openserString           String
+hi def link openserStringDelimiter  Delimiter
 hi def link openserStringEscape     Special
 
 let b:current_syntax = "openser"
