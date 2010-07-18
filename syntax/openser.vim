@@ -54,7 +54,7 @@ syn keyword	openserCoreParameter	advertised_address advertised_port alias avp_al
 syn region	openserBlock	start='{' end='}' contained contains=openserBlock,@openserCodeElements transparent fold
 
 syn match	openserFunction	'\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\s*\[[^\]]\+\]\)\?' contained contains=openserNumber
-syn region	openserFunctionFold	matchgroup=openserFunction start="\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\s*\[[^\]]\+\]\)\?\s*{" matchgroup=NONE end="}" transparent fold contains=openserBlock,@openserCodeElements
+syn region	openserFunctionFold	matchgroup=openserFunction start="\<\(failure_\|onreply_\|branch_\|error_\)\?route\>\(\s*\[[^\]]\+\]\)\?\s*\n*{" matchgroup=NONE end="}" transparent fold contains=openserBlock,@openserCodeElements
 
 syn cluster	openserCodeElements contains=openserCppComment,openserHashComment,openserNumber,openserString,openserVariable,openserOperator,openserConditional,openserKeyword,openserCoreKeyword,openserCoreValue,openserCoreFunction,openserIdentifier
 
